@@ -1,0 +1,173 @@
+body {
+    color: #252222;
+   background: rgb(228 255 237 / 50%);
+    background: radial-gradient(circle, rgb(249 243 210) 0%, rgb(250 255 234 / 61%) 100%);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 15px;
+    line-height: 1.85714;
+ 
+ 
+ }
+ 
+
+ .ui-select{width: 100%}
+ /* This is to remove the arrow of select element in IE */
+ select::-ms-expand {	display: none; }
+ select{
+     -webkit-appearance: none;
+     appearance: none;
+ }
+ @-moz-document url-prefix(){
+     .ui-select{border: 1px solid #CCC; border-radius: 4px; box-sizing: border-box; position: relative; overflow: hidden;}
+   .ui-select select { width: 110%; background-position: right 30px center !important; border: none !important;}
+ }
+
+ .tabledata{
+   direction: rtl;
+   margin: 20px 400px 0px 0px;
+ 
+ }
+ 
+ .navbar-brand{
+   font-family: 'Rakkas', cursive ;
+   font-size: 50px;
+   width: 50px;
+   text-align: right;
+   position:absolute;
+   right: 3%;
+ 
+ }
+ .navbar-light .navbar-brand {
+     color: #7b4c64;
+ }
+ #Features{
+   padding: 7% 15%;
+   font-family: 'Tajawal', sans-serif;
+ 
+ }
+ img.icons{
+   width: 50%;
+   padding: 3% 8%
+ }
+ 
+ .t-large {
+     font-size: 24px;
+     font-size: 1.5rem;
+     line-height: 1.67;
+     text-align: center;
+     padding-top: 5%;
+   /*  color: #e0e1e6;*/
+ 
+ }
+ .input{
+   direction: rtl;
+   padding-right: 10%;
+ 
+ }
+ #input_text{
+   width: 180px;
+ 
+ }
+ h2.FB{
+   color: black;
+ }
+ #title{
+     background-color:#e0ece4;
+     padding: 1% 2% 2% 2%;
+ }
+ .text-center{
+   color: #0b4580;
+ }
+ .box .contact{
+   margin: 50px 50px 50px 50px;
+ }
+ h1,h2,h3{
+   font-family: 'Tajawal', sans-serif;
+   color: #7b4c64;
+   text-align: right;
+   font-size: 1.7rem
+ }
+ title {
+     font-family: 'Tajawal', sans-serif;
+     padding: 0;
+     color: #222;
+     font-weight: bold;
+     font-size: 20px;
+     margin: 5px;
+ }
+ .nav-item{
+   margin-top: 2%;
+ }
+ .drob{
+   padding-left: 90%;
+   margin:-5px 0px 0px 5px;
+   direction: rtl;
+   color: black;
+   width :40px;
+ 
+ }
+ .card-block{
+   right: 5px;
+   left: 5px;
+   top: 5px;
+ }
+ a{
+ 
+     color: #7b4c64;
+ }
+ .btn-light {
+     color: #212529;
+     background-color: rgba(0,0,0,.0);
+     border-color: rgba(0,0,0,.0);
+ }
+ a.FB {
+     color: black;
+     direction: rtl;
+ }
+ hr{
+   border-style: none;
+   border-top-style: dotted;
+   border-color: grey;
+   border-width: 2px;
+   width: 50%;
+ 
+ }
+ .btn.is-teal {
+     background-color: #f2f4fd;
+     border-color: #4c5d5d;
+     align-items: center;
+     width: 50px;
+ }
+ #text{
+   padding: 0 5% ;
+ 
+ }
+ .contact{
+   padding-top: 10px;
+ }
+
+
+ .container .card{
+    background-color: inherit;
+    border: none;
+    text-align: right;
+
+}
+.container{
+    color: #7B4C8E;
+}
+.pos h1{
+  
+}
+
+
+
+
+ @media (max-width:768px) {
+ .navbar-brand {
+   top: 0;
+   left: 80%;
+   right: 1%;
+ }
+ }
+ 

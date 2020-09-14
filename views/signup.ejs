@@ -1,0 +1,60 @@
+<%- include('header'); -%>
+
+<div class="container mt-5">
+  <h1>انشئ حسابك</h1>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card" style="margin-top: 2rem;">
+        <div class="card-body" >
+          <a class="btn btn-block btn-social btn-google"  style="text-align: right;" href="/auth/google" role="button">
+            <i class="fab fa-google"></i>
+            انشئ حساب باستخدام جوجل
+          </a>
+        </div>
+        <div class="card-body" >
+            <a class="btn btn-block btn-social btn-facebook" style="text-align: right;" href="/auth/facebook" role="button">
+              <i class="fab fa-facebook"></i>
+              انشئ حساب باستخدام فيسبوك
+
+            </a>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Makes POST request to /login route -->
+          <form action="/signup" method="POST">
+            <div class="form-group">
+              <label for="name">اسم المستخدم</label>
+              <input type="text" class="form-control" name="name">
+            </div>
+
+            <div class="form-group">
+              <label for="email">البريد الالكتروني</label>
+              <input type="email" class="form-control" name="username">
+            </div>
+            <div class="form-group">
+              <label for="password">كلمه السر</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+            <button type="submit" class="btn btn-dark">انشئ حسابك</button>
+          </form>
+          <% if (wrong) { %>
+            <div class="alert alert-danger animate" role="alert">
+              The email is exist try to <a href="/login"> log in</a> or use other email
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    
+
+  </div>
+</div>
+
+<%- include('footer');-%>
