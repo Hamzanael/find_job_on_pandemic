@@ -96,8 +96,8 @@ app.get('/loginfail', (req, res) => {
     res.render("login" , {wrong:true}); 	
 });
 
+/*log in and sign up  */
 app.post("/login", function(req, res){
-
     const user = new User({
       username: req.body.username,
       password: req.body.password
@@ -109,12 +109,28 @@ app.post("/login", function(req, res){
       } else {
         
         passport.authenticate("local" , { failureRedirect: '/loginfail' })(req, res, function(){
-          res.redirect("/userhome");
+          res.redirect("/");
         });
       }
     });
   
   });
+
+
+  app.post('/signup', (req, res) => {
+    User.register({
+        username: req.body.username,name:req.body.name}, req.body.password, function (err, user) {
+        if (err) {
+            console.log(err);
+            res.render("signUp",{wrong:true});
+        } else {
+            passport.authenticate("local")(req, res, function () {
+                res.redirect("/userhome");
+            });
+        }
+    });
+
+}); 
 /*Google sign in*/
 
 app.get('/auth/google',
@@ -132,11 +148,6 @@ app.get('/auth/google/home',
     function (req, res) {
         // Successful authentication, redirect home.
         res.redirect("/");
-
-
-
-
-
 
     });
 
