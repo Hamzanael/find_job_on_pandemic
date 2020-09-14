@@ -79,6 +79,7 @@ function (accessToken, refreshToken, profile, cb) {
 ));
 
 
+
 app.get('/', (req, res) => {
 res.render("home");
 });
@@ -96,7 +97,39 @@ app.get('/loginfail', (req, res) => {
     res.render("login" , {wrong:true}); 	
 });
 
-/*log in and sign up  */
+app.get('/tadreeb', (req, res) => {
+res.render("tadreeb");
+});
+
+
+
+app.get('/wazefeh', (req, res) => {
+res.render("wazefeh");
+});
+
+
+
+/*Google sign in*/
+
+app.get('/auth/google',
+    passport.authenticate('google', {
+        scope: ['profile']
+    })
+
+
+);
+
+app.get('/auth/google/home',
+    passport.authenticate('google', {
+        failureRedirect: '/login'
+    }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+        res.redirect("/");
+
+    });
+
+/*log in and sign up  locally*/
 app.post("/login", function(req, res){
     const user = new User({
       username: req.body.username,
@@ -131,27 +164,40 @@ app.post("/login", function(req, res){
     });
 
 }); 
-/*Google sign in*/
 
-app.get('/auth/google',
-    passport.authenticate('google', {
-        scope: ['profile']
-    })
-
-
-);
-
-app.get('/auth/google/home',
-    passport.authenticate('google', {
-        failureRedirect: '/login'
-    }),
-    function (req, res) {
-        // Successful authentication, redirect home.
-        res.redirect("/");
+app.post('/saveWork', (req, res) => {
+    const newWork=new db.Work({
+        JobName: req.body.JobName,
+        place:req.body.place,
+        study:req.body.study,
+        experiance:req.body.experiance,
+        salary:req.body.salary,
+        phone:req.body.phone,
+        mail:req.body.mail,
+        hours:req.body.hours,
+        discription : req.body.discription,
 
     });
+    newWork.save();
 
+});
 
+app.post('/saveTraning', (req, res) => {
+ const newTraning = new db.Corse({
+    TranName: req.body.TranName,
+    place:req.body.place,
+    time:req.body.time,
+    cost:req.body.cost,
+    period:req.body.period,
+    phone:req.body.phone,
+    mail:req.body.mail,
+    description : req.body.description,
+
+ });
+
+newTraning.save();
+
+});
 
 
 
