@@ -103,7 +103,7 @@ res.render("tadreeb");
 
 
 
-app.get('/wazefeh', (req, res) => {
+app.get('/wazeefeh', (req, res) => {
 res.render("wazefeh");
 });
 

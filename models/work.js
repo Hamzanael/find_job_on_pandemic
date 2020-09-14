@@ -7,7 +7,7 @@ const Work = mongoose.model(
         study:String,
         experiance:String,
         salary:Number,
-        phone:String,
+        phone:Number,
         mail:String,
         hours:Number,
         discription : String,

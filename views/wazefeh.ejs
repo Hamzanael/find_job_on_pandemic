@@ -1,71 +1,49 @@
-
 <%- include('header');-%>
-<div class="box ">
-    <h1 class="t-large ">اعلن عن الوظيفة هنا </h1>
-    <div class="tabledata">
-      <table cellspace='20'>
-        <tr>
-          <td>
-            <form action="/saveWork" method="POST">
-            <table>
-              <tr>
-                <td><label class="ml-sm-2">اسم الوظيفة </label></td>
-                <td><input type="text" name="JobName" placeholder="وظيفة"></td>
-              </tr>
-              <tr>
-                <td><label class="ml-sm-2">مكان العمل </label></td>
-                <td><input type="text" name="place" placeholder="مكان العمل"></td>
-              </tr>
-              <tr>
-                <td><label class="ml-sm-2">درجة التعليم </label></td>
-                <td><input type="text" name="study" placeholder="باكالوريوس"></td>
-              </tr>
-              <tr>
-                <td><label class="ml-sm-2">مستوى الخبرة </label></td>
-                <td><input type="text" name="experiance" placeholder="سنتين"></td>
-              </tr>
-              <tr>
-                <td><label class="ml-sm-2">الراتب </label></td>
-                <td><input type="number" name="salary" placeholder="350"></td>
-              </tr>
-            </table>
-          </td>
-          <td>
-            <table>
-              <tr>
-                <td><label class="ml-sm-2">رقم هاتف </label></td>
-                <td><input type="number" name="phone" placeholder="07XXXXXXXX"></td>
-              </tr>
-              <tr>
-                <td><label class="ml-sm-2">الايميل </label></td>
-                <td><input type="email" name="mail" placeholder="name@example.com"></td>
-              </tr>
-              <tr>
-                <td><label class="ml-sm-2">ساعات العمل </label></td>
-                <td><input type="number" name="hours" placeholder="8"></td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-
-      <table>
-        <tr>
-          <td> <label>تفاصيل : </label> </td>
-          <td>
-            <textarea name="discription" rows="5" cols="30" minlength="0" maxlength="500"></textarea>
-          </td>
-          <td>
-              
-            <input type="submit" value="انشر ">
-        </form>
-          </td>
-        </tr>
-      </table>
-
-    </div>
+<section class="get-in-touch">
+    <h1 class="title">انشر عملك</h1>
+    <form class="contact-form row" action="/saveWork" method="POST">
+        <div class="form-field col-lg-6 ">
+            <input id="JobName" class="input-text js-input" type="text" name="JobName" required>
+            <label class="label" for="JobName">اسم الوظيفه</label>
+        </div>
+        <div class="form-field col-lg-6 ">
+            <input id="place" class="input-text js-input" type="text" name="place" required>
+            <label class="label" for="place"> مكان الوظيفه</label>
+        </div>
+        <div class="form-field col-lg-6 ">
+            <input id="phone" class="input-text js-input" type="text" >
+            <label class="label" for="phone">الخبرة المطلوبة</label>
+        </div>
+        <div class="form-field col-lg-6 ">
+            <input id="experiance" class="input-text js-input" type="number" name="experiance" required>
+            <label class="label" for="experiance">عدد ساعات العمل</label>
+        </div>
+        <div class="form-field col-lg-6 ">
+            <input id="salary" class="input-text js-input" type="number" name="salary" required>
+            <label class="label" for="salary">الراتب اليومي</label>
+        </div>
+        <div class="form-field col-lg-6">
+            <input id="study" class="input-text js-input" type="text"  name="study" placeholsalaryder="في حال عدم وجود تخصص الرجاء ترك الحقل فارغ">
+            <label class="label" for="study">التخصص الدراسي</label>
+        </div>
+        <div class="form-field col-lg-6">
+            <input id="phone" class="input-text js-input" type="number" name="phone" required>
+            <label class="label" for="phone">رقم الهاتف</label>
+        </div>
+        <div class="form-field col-lg-6">
+            <input id="mail" class="input-text js-input" type="text" name="mail">
+            <label class="label" for="mail">البريد الالكتروني</label>
+        </div>
+        <div class="form-field col-lg-12">
+            <input id="discription" class="input-text js-input" type="text" name="discription">
+            <label class="label" for="discription">شرح عن الوظيفه</label>
+        </div>
+        
+        <div class="form-field col-lg-12">
+            <input class="submit-btn" type="submit" value="انشر">
+        </div>
+    </form>
+</section>
 
 
-  </div>
-
-  <%- include('footer');-%>
+<%- include('footer');-%>
