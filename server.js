@@ -101,12 +101,63 @@ app.get('/tadreeb', (req, res) => {
 res.render("tadreeb");
 });
 
+app.get('/wazaef', (req, res) => {
+    db.Work.find({} , (err,found)=>{
+        if(!err){
+            res.render("wazaef",{Works:found});
+        }
+        else{
+            console.log(err);
+        }
+    });
 
+   
+});
+
+app.get('/tadreebpage', (req, res) => {
+
+db.Corse.find({},(err,found)=>{
+if(!err){
+    res.render("tadreepPage",{Trian:found});
+}
+else{
+    console.log(err);
+}
+});
+    
+});
 
 app.get('/wazeefeh', (req, res) => {
 res.render("wazefeh");
 });
+app.get('/services', (req, res) => {
+res.render("services");	
+});
 
+app.get('/contactUs', (req, res) => {
+res.render("contactUs");	
+});
+
+app.get('/search_member', function(req, res) {
+      
+    var regex = new RegExp(req.query["term"], 'i');
+    var query = db.Work.find({JobName: regex}, { 'JobName': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20);
+      
+       // Execute query in a callback and return users list
+   query.exec(function(err, work) {
+       if (!err) {
+          // Method to construct the json result set
+          var result = JSON.stringify(work);
+          res.send(result, {
+             'Content-Type': 'application/json'
+          }, 200);
+       } else {
+          res.send(JSON.stringify(err), {
+             'Content-Type': 'application/json'
+          }, 404);
+       }
+    });
+ });
 
 
 /*Google sign in*/
@@ -166,6 +217,7 @@ app.post("/login", function(req, res){
 }); 
 
 app.post('/saveWork', (req, res) => {
+    
     const newWork=new db.Work({
         JobName: req.body.JobName,
         place:req.body.place,
@@ -176,9 +228,10 @@ app.post('/saveWork', (req, res) => {
         mail:req.body.mail,
         hours:req.body.hours,
         discription : req.body.discription,
-
+        createDate :req.body.createdate
     });
     newWork.save();
+    res.redirect("/wazeefeh");
 
 });
 
@@ -192,10 +245,13 @@ app.post('/saveTraning', (req, res) => {
     phone:req.body.phone,
     mail:req.body.mail,
     description : req.body.description,
+    hours:req.body.hours,
+    createDate:req.body.createdate
 
  });
 
-newTraning.save();
+newTraning.save(); 
+res.redirect("/tadreepPage'")
 
 });
 

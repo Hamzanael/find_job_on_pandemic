@@ -11,6 +11,7 @@ const Work = mongoose.model(
         mail:String,
         hours:Number,
         discription : String,
+        createDate:String
     })
   );
   

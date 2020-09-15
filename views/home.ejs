@@ -2,9 +2,9 @@
 
 <section class="search ">
   
-  <form class="form-inline d-flex justify-content-center md-form form-sm active-pink active-pink-2 mt-2">
-    <i class="fas fa-search" aria-hidden="true"></i>
-    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="ابحث عن وظيفة"
+  <form class="form-inline d-flex justify-content-center md-form form-sm active-pink active-pink-2 mt-2" method="POST" action="/search" >
+    <button type="submit"> <i class="fas fa-search" aria-hidden="true"></i></button>
+    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="ابحث عن وظيفة" id="search-query" style="text-align: right;"
       aria-label="Search">
   </form>
 
@@ -18,12 +18,12 @@
 
     <div class="row">
       <div class="Feature-box col-lg-3 col-md-4 col-sm-6">
-         <a  href="/jobs"> <img class="icons text-center" src="/imges/opportunity.png" alt="">
+         <a  href="/wazaef"> <img class="icons text-center" src="/imges/opportunity.png" alt="">
         <h3 class="FB">الوظائف </h3> </a>
       </div>
 
       <div class="Feature-box col-lg-3 col-md-4 col-sm-6">
-      <a href="/trian">  <img class="icons " src="/imges/online-learning.png" alt="">
+      <a href="/tadreebpage">  <img class="icons " src="/imges/online-learning.png" alt="">
         <h3 class="FB"> الدورات  </h3></a>
       </div>
 
@@ -35,7 +35,7 @@
         <div class="drop btn-group" role="group">
 
           <button id="dropdownMenuButton" type="button" class="btn btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <h3 class="FB "> انشر</h3>
+          <h3 class="FB"> انشر</h3>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item text-center" href="/wazeefeh">وظيفة</a>
@@ -45,8 +45,9 @@
         </div>
     </div>
     <div class="Feature-box col-lg-3 col-md-4 col-sm-6">
-      <a  href="#"><img class="icons" src="/imges/customer.png" alt="">
+      <a  href="/services"><img class="icons" src="/imges/customer.png" alt="">
        <h3 class="FB"> خدمات </h3> </a>
     </div>
   </section>
+
   <%- include('footer');-%>

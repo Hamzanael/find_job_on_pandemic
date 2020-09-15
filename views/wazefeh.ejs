@@ -11,13 +11,13 @@
             <label class="label" for="place"> مكان الوظيفه</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="phone" class="input-text js-input" type="text"
-                placeholder="في حال عدم وجود خبره الرجاء ترك الحقل فارغ">
-            <label class="label" for="phone">الخبرة المطلوبة</label>
+            <input id="experiance" class="input-text js-input" type="text"
+                placeholder="في حال عدم وجود خبره الرجاء ترك الحقل فارغ" name="experiance">
+            <label class="label" for="experiance">الخبرة المطلوبة</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="experiance" class="input-text js-input" type="number" name="experiance" required>
-            <label class="label" for="experiance">عدد ساعات العمل</label>
+            <input id="hours" class="input-text js-input" type="number" name="hours" required>
+            <label class="label" for="hours">عدد ساعات العمل</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
             <input id="salary" class="input-text js-input" type="number" name="salary" required>
@@ -42,12 +42,30 @@
                 placeholder="في حال عدم وجود شرح الرجاء ترك الحقل فارغ">
             <label class="label" for="discription">شرح عن الوظيفه</label>
         </div>
-
+        <input type="hidden" name="createdate" id="todayDate"/>
         <div class="form-field col-lg-12 ">
             <input class="submit-btn" type="submit" value="انشر">
         </div>
     </form>
 </section>
 
+
+<script type="text/javascript">
+    function getDate()
+    {
+        
+    let dateObj = new Date();
+    let month = dateObj.getMonth()+1;
+    let day = String(dateObj.getDate()).padStart(2, '0');
+    let year = dateObj.getFullYear();
+    let output = day    + '/'+ month+ '/' + year;
+
+    
+        document.getElementById("todayDate").value = output;
+    }
+    
+    //call getDate() when loading the page
+    getDate();
+    </script>
 
 <%- include('footer');-%>

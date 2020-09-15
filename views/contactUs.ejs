@@ -1,0 +1,30 @@
+<%- include('header');-%>
+<section class="get-in-touch">
+    <h1 class="title">انشر الدوره او التدريب </h1>
+    <form class="contact-form row" action="/saveTraning" method="POST">
+        <div class="form-field col-lg-6 col-sm-5">
+            <input id="Name" class="input-text js-input" type="text" name="Name" required>
+            <label class="label" for="Name">الاسم</label>
+        </div>
+        <div class="form-field col-lg-6 col-sm-5">
+            <input id="serviceName" class="input-text js-input" type="text" name="serviceName" required>
+            <label class="label" for="serviceName"> اسم الخدمة</label>
+        </div>
+        
+        <div class="form-field col-lg-6 col-sm-5">
+            <input id="phone" class="input-text js-input" type="number" name="phone" required>
+            <label class="label" for="phone">رقم الهاتف</label>
+        </div>
+        <div class="form-field col-lg-6 col-sm-5">
+            <input id="mail" class="input-text js-input" type="text" name="mail"
+                placeholder="في حال عدم وجود بريد الرجاء ترك الحقل فارغ">
+            <label class="label" for="mail">  البريد الالكتروني اذا وجد</label>
+        </div>
+       
+        <div class="form-field col-lg-12 ">
+            <input class="submit-btn" type="submit" value="ارسل">
+        </div>
+    </form>
+</section>
+       
+<%- include('footer');-%>
