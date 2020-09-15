@@ -1,159 +1,183 @@
 body {
     color: #252222;
-   background: rgb(228 255 237 / 50%);
+    background: rgb(228 255 237 / 50%);
     background: radial-gradient(circle, rgb(249 243 210) 0%, rgb(250 255 234 / 61%) 100%);
     font-family: 'Tajawal', sans-serif;
     font-size: 15px;
     line-height: 1.85714;
- 
- 
- }
- 
-
- .ui-select{width: 100%}
- /* This is to remove the arrow of select element in IE */
- select::-ms-expand {	display: none; }
- select{
-     -webkit-appearance: none;
-     appearance: none;
- }
- @-moz-document url-prefix(){
-     .ui-select{border: 1px solid #CCC; border-radius: 4px; box-sizing: border-box; position: relative; overflow: hidden;}
-   .ui-select select { width: 110%; background-position: right 30px center !important; border: none !important;}
- }
-
- .tabledata{
-   direction: rtl;
-   margin: 20px 400px 0px 0px;
- 
- }
- 
- .navbar-brand{
-   font-family: 'Rakkas', cursive ;
-   font-size: 50px;
-   width: 50px;
-   text-align: right;
-   position:absolute;
-   right: 3%;
- 
- }
- .navbar-light .navbar-brand {
-     color: #7b4c64;
- }
- #Features{
-   padding: 7% 15%;
-   font-family: 'Tajawal', sans-serif;
- 
- }
- img.icons{
-   width: 50%;
-   padding: 3% 8%
- }
- 
- .t-large {
-     font-size: 24px;
-     font-size: 1.5rem;
-     line-height: 1.67;
-     text-align: center;
-     padding-top: 5%;
-   /*  color: #e0e1e6;*/
- 
- }
- .input{
-   direction: rtl;
-   padding-right: 10%;
- 
- }
- #input_text{
-   width: 180px;
- 
- }
- h2.FB{
-   color: black;
- }
- #title{
-     background-color:#e0ece4;
-     padding: 1% 2% 2% 2%;
- }
- .text-center{
-   color: #0b4580;
- }
- .box .contact{
-   margin: 50px 50px 50px 50px;
- }
- h1,h2,h3{
-   font-family: 'Tajawal', sans-serif;
-   color: #7b4c64;
-   text-align: right;
-   font-size: 1.7rem
- }
- title {
-     font-family: 'Tajawal', sans-serif;
-     padding: 0;
-     color: #222;
-     font-weight: bold;
-     font-size: 20px;
-     margin: 5px;
- }
- .nav-item{
-   margin-top: 2%;
- }
- .drob{
-   padding-left: 90%;
-   margin:-5px 0px 0px 5px;
-   direction: rtl;
-   color: black;
-   width :40px;
- 
- }
- .card-block{
-   right: 5px;
-   left: 5px;
-   top: 5px;
- }
- a{
- 
-     color: #7b4c64;
- }
- .btn-light {
-     color: #212529;
-     background-color: rgba(0,0,0,.0);
-     border-color: rgba(0,0,0,.0);
- }
- a.FB {
-     color: black;
-     direction: rtl;
- }
- hr{
-   border-style: none;
-   border-top-style: dotted;
-   border-color: grey;
-   border-width: 2px;
-   width: 50%;
- 
- }
- .btn.is-teal {
-     background-color: #f2f4fd;
-     border-color: #4c5d5d;
-     align-items: center;
-     width: 50px;
- }
- #text{
-   padding: 0 5% ;
- 
- }
- .contact{
-   padding-top: 10px;
- }
+}
 
 
- .container .card{
+.navbar-brand{
+    font-family: 'Rakkas', cursive ;
+    font-size: 50px;
+    width: 50px;
+    text-align: right;
+    position: absolute;;
+    right:5% ;
+    top: 10%;
+    
+  }
+  .navbar-light .navbar-brand {
+      color: #8f1f59;
+  }
+
+  .search{
+margin-top: 30px;
+  }
+  .navbar{
+      width: 100%;
+  }
+  
+  .active-pink input.form-control[type=text] {
+    border-bottom: 1px solid #32e4a0;
+    box-shadow: 0 1px 0 0 #8fccf4;
+    border-top: 0;
+    background-color: inherit;
+  }
+
+  .active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+  }
+
+#Features {
+    padding: 7% 15%;
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+}
+
+img.icons {
+    width: 50%;
+    padding: 3% 8%;
+}
+
+.t-large {
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.67;
+    text-align: center;
+    padding-top: 5%;
+    /*  color: #e0e1e6;*/
+
+}
+
+.input {
+    direction: rtl;
+    padding-right: 10%;
+
+}
+
+#input_text {
+    width: 180px;
+
+}
+
+h2.FB {
+    color: black;
+}
+
+#title {
+    background-color: #e0ece4;
+    padding-top: 5px ;
+    width: 100%;
+}
+
+.text-center {
+    color: #0b4580;
+}
+
+.box .contact {
+    margin: 50px 50px 50px 50px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Tajawal', sans-serif;
+    color: #7b4c64;
+    text-align: right;
+    font-size: 1.7rem
+}
+
+title {
+    font-family: 'Tajawal', sans-serif;
+    padding: 0;
+    color: #222;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.pos{
+   margin-left: 50px; 
+}
+
+.drob {
+    padding-left: 90%;
+    margin: -5px 0px 0px 5px;
+    direction: rtl;
+    color: black;
+    width: 40px;
+
+}
+
+.card-block {
+    right: 5px;
+    left: 5px;
+    top: 5px;
+}
+
+a {
+
+    color: #7b4c64;
+}
+
+.btn-light {
+    color: #212529;
+    background-color: rgba(0, 0, 0, .0);
+    border-color: rgba(0, 0, 0, .0);
+}
+
+a.FB {
+    color: black;
+    direction: rtl;
+}
+
+hr {
+    border-style: none;
+    border-top-style: dotted;
+    border-color: grey;
+    border-width: 2px;
+    width: 50%;
+
+}
+
+.btn.is-teal {
+    background-color: #f2f4fd;
+    border-color: #4c5d5d;
+    align-items: center;
+    width: 50px;
+}
+
+#text {
+    padding: 0 5%;
+
+}
+
+.contact {
+    padding-top: 10px;
+}
+
+
+.container .card {
     background-color: inherit;
     border: none;
     text-align: right;
 
 }
-.container{
+
+.container {
     color: #7B4C8E;
 }
 
@@ -163,29 +187,31 @@ body {
     max-width: 800px;
     margin: 50px auto;
     position: relative;
-  
-  }
-  .get-in-touch .title {
+
+}
+
+.get-in-touch .title {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 3.2em;
     line-height: 48px;
     padding-bottom: 48px;
-       color: #5543ca;
-      background: #5543ca;
-      background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-      background: -webkit-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-      background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-  }
-  
-  .contact-form .form-field {
+    color: #5543ca;
+    background: #5543ca;
+    background: -moz-linear-gradient(left, #f4524d 0%, #5543ca 100%) !important;
+    background: -webkit-linear-gradient(left, #f4524d 0%, #5543ca 100%) !important;
+    background: linear-gradient(to right, #f4524d 0%, #5543ca 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.contact-form .form-field {
     position: relative;
     margin: 32px 0;
-  }
-  .contact-form .input-text {
+}
+
+.contact-form .input-text {
     display: block;
     width: 100%;
     height: 36px;
@@ -196,16 +222,19 @@ body {
     font-weight: 400;
     text-align: right;
     background-color: inherit;
-  }
-  .contact-form .input-text:focus {
+}
+
+.contact-form .input-text:focus {
     outline: none;
-  }
-  .contact-form .input-text:focus + .label,
-  .contact-form .input-text.not-empty + .label {
+}
+
+.contact-form .input-text:focus+.label,
+.contact-form .input-text.not-empty+.label {
     -webkit-transform: translateY(-24px);
-            transform: translateY(-24px);
-  }
-  .contact-form .label {
+    transform: translateY(-24px);
+}
+
+.contact-form .label {
     position: absolute;
     margin-bottom: 1.5rem;
     left: 0;
@@ -218,30 +247,63 @@ body {
     cursor: text;
     transition: -webkit-transform .2s ease-in-out;
     transition: transform .2s ease-in-out;
-    transition: transform .2s ease-in-out, 
-    -webkit-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out,
+        -webkit-transform .2s ease-in-out;
     text-align: right;
-  }
-  .contact-form .submit-btn {
+}
+
+.contact-form .submit-btn {
     background-color: #A04A8E;
     color: inherit;
     font-size: 16px;
     padding: 8px 16px;
     border: none;
-    width:200px;
+    width: 60%;
     cursor: pointer;
     float: right;
-  }
-  
-  
+    margin-right: 180px;
+}
+
+/* remove arrow from number input*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
 
 
+@media (max-width:768px) {
+    .navbar-brand {
+        
+      
+        right: 10%;
+    }
 
- @media (max-width:768px) {
- .navbar-brand {
-   top: 0;
-   left: 80%;
-   right: 1%;
- }
- }
- 
+    .contact-form {
+        padding: 0;
+    }
+    .pos{
+        margin: 0;
+    }
+    ..get-in-touch{
+        max-width: 100%;
+        margin: 0;
+    }
+    .contact-form .submit-btn {
+        width: 100%;
+        margin-right: 0;
+    }
+    .row{
+        margin-right: 0;
+    }
+    .search{
+        margin-top: 50px;
+    }
+    
+}

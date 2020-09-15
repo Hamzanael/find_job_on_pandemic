@@ -2,44 +2,48 @@
 <section class="get-in-touch">
     <h1 class="title">انشر عملك</h1>
     <form class="contact-form row" action="/saveWork" method="POST">
-        <div class="form-field col-lg-6 ">
+        <div class="form-field col-lg-6 col-sm-5">
             <input id="JobName" class="input-text js-input" type="text" name="JobName" required>
             <label class="label" for="JobName">اسم الوظيفه</label>
         </div>
-        <div class="form-field col-lg-6 ">
+        <div class="form-field col-lg-6 col-sm-5">
             <input id="place" class="input-text js-input" type="text" name="place" required>
             <label class="label" for="place"> مكان الوظيفه</label>
         </div>
-        <div class="form-field col-lg-6 ">
-            <input id="phone" class="input-text js-input" type="text" >
+        <div class="form-field col-lg-6 col-sm-5">
+            <input id="phone" class="input-text js-input" type="text"
+                placeholder="في حال عدم وجود خبره الرجاء ترك الحقل فارغ">
             <label class="label" for="phone">الخبرة المطلوبة</label>
         </div>
-        <div class="form-field col-lg-6 ">
+        <div class="form-field col-lg-6 col-sm-5">
             <input id="experiance" class="input-text js-input" type="number" name="experiance" required>
             <label class="label" for="experiance">عدد ساعات العمل</label>
         </div>
-        <div class="form-field col-lg-6 ">
+        <div class="form-field col-lg-6 col-sm-5">
             <input id="salary" class="input-text js-input" type="number" name="salary" required>
             <label class="label" for="salary">الراتب اليومي</label>
         </div>
-        <div class="form-field col-lg-6">
-            <input id="study" class="input-text js-input" type="text"  name="study" placeholsalaryder="في حال عدم وجود تخصص الرجاء ترك الحقل فارغ">
+        <div class="form-field col-lg-6 col-sm-5">
+            <input id="study" class="input-text js-input" type="text" name="study"
+                placeholder="في حال عدم وجود تخصص الرجاء ترك الحقل فارغ">
             <label class="label" for="study">التخصص الدراسي</label>
         </div>
-        <div class="form-field col-lg-6">
+        <div class="form-field col-lg-6 col-sm-5">
             <input id="phone" class="input-text js-input" type="number" name="phone" required>
             <label class="label" for="phone">رقم الهاتف</label>
         </div>
-        <div class="form-field col-lg-6">
-            <input id="mail" class="input-text js-input" type="text" name="mail">
+        <div class="form-field col-lg-6 col-sm-5">
+            <input id="mail" class="input-text js-input" type="text" name="mail"
+                placeholder="في حال عدم وجود بريد الرجاء ترك الحقل فارغ">
             <label class="label" for="mail">البريد الالكتروني</label>
         </div>
-        <div class="form-field col-lg-12">
-            <input id="discription" class="input-text js-input" type="text" name="discription">
+        <div class="form-field col-lg-12 col-sm-9">
+            <input id="discription" class="input-text js-input" type="text" name="discription"
+                placeholder="في حال عدم وجود شرح الرجاء ترك الحقل فارغ">
             <label class="label" for="discription">شرح عن الوظيفه</label>
         </div>
-        
-        <div class="form-field col-lg-12">
+
+        <div class="form-field col-lg-12 ">
             <input class="submit-btn" type="submit" value="انشر">
         </div>
     </form>

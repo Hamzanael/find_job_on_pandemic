@@ -1,6 +1,15 @@
 <%- include('header'); -%>
 
+<section class="search ">
+  
+  <form class="form-inline d-flex justify-content-center md-form form-sm active-pink active-pink-2 mt-2">
+    <i class="fas fa-search" aria-hidden="true"></i>
+    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="ابحث عن وظيفة"
+      aria-label="Search">
+  </form>
 
+
+</section>
 
   <!-- ******** Features ******  -->
 
@@ -8,35 +17,36 @@
 
 
     <div class="row">
-      <div class="feature-box col-lg-3">
-        <img class="icons" src="/imges/customer.png" alt="">
-        <h2> <a class="FB" href="#">خدمات </a> </h2>
+      <div class="Feature-box col-lg-3 col-md-4 col-sm-6">
+         <a  href="/jobs"> <img class="icons text-center" src="/imges/opportunity.png" alt="">
+        <h3 class="FB">الوظائف </h3> </a>
+      </div>
+
+      <div class="Feature-box col-lg-3 col-md-4 col-sm-6">
+      <a href="/trian">  <img class="icons " src="/imges/online-learning.png" alt="">
+        <h3 class="FB"> الدورات  </h3></a>
       </div>
 
 
-      <div class="feature-box col-lg-3">
-        <img class="icons" src="/imges/blog.png" alt="">
-        <div class="drob btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <h2 class="FB"> انشر</h2>
+      <div class="Feature-box col-lg-3 col-md-4 col-sm-6">
+
+         <img class="icons" src="/imges/blog.png" alt="">
+
+        <div class="drop btn-group" role="group">
+
+          <button id="dropdownMenuButton" type="button" class="btn btn-light " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <h3 class="FB "> انشر</h3>
           </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item text-center" href="/wazeefeh">وظيفة</a>
-            <a class="dropdown-item text-center" href="/tadreeb">برنامج تدريبي</a>
+            <a class="dropdown-item text-center"  href="/tadreeb">دورة</a>
           </div>
+
         </div>
     </div>
-
-    <div class="feature-box col-lg-3">
-      <img class="icons" src="/imges/online-learning.png" alt="">
-      <h2> <a class="FB" href="/trian">برامج تدريبية </a> </h2>
-    </div>
-
-
-    <div class="feature-box col-lg-3 ">
-      <img class="icons" src="/imges/opportunity.png" alt="">
-      <h2> <a class="FB" href="/jobs">الوظائف </a> </h2>
+    <div class="Feature-box col-lg-3 col-md-4 col-sm-6">
+      <a  href="#"><img class="icons" src="/imges/customer.png" alt="">
+       <h3 class="FB"> خدمات </h3> </a>
     </div>
   </section>
- 
   <%- include('footer');-%>
