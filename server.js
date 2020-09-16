@@ -9,7 +9,7 @@ const findOrCreate = require('mongoose-findorcreate');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy=require("passport-facebook").Strategy;
 const app = express();
-const db = require("./models");
+const db = require( __dirname+"/models");
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -23,10 +23,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 //Connect with the data Base
-mongoose.connect('mongodb://localhost:27017/JobDB', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+mongoose.connect('mongodb+srv://admin-hamza:nh19991128@cluster0.kj5ro.mongodb.net/JobDB', 
+{useNewUrlParser: true,useUnifiedTopology: true});
 
 mongoose.set("useCreateIndex", true);
 //create user schema
