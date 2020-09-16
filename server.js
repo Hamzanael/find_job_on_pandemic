@@ -105,53 +105,61 @@ app.get('/tadreeb', (req, res) => {
     if(req.isAuthenticated()){
         res.render("tadreeb",{login:true, name:req.user.name});
     }else{
-        res.render("tadreeb",{login:false});
+        res.render("fail",{login:false});
     }
     
 });
 
 app.get('/wazaef', (req, res) => {
+    var query = db.Work.find({}).sort({"_id":-1});
     if(req.isAuthenticated()){
-    db.Work.find({} , (err,found)=>{
-        if(!err){
-            res.render("wazaef",{Works:found,login:true, name:req.user.name});
-        }
-        else{
-            console.log(err);
-        }
-    });
-    } else{
-        db.Work.find({} , (err,found)=>{
-            if(!err){
-                res.render("wazaef",{Works:found,login:false});
-            }
-            else{
-                console.log(err);
-            }
-        });
-    }
+        query.exec(function(err, work) {
+            if (!err) {
+                console.log(work);
+                res.render("wazaef",{Works:work,login:true, name:req.user.name});
+
+         }});
+       
+
+
+
+}
+else{ 
+        query.exec(function(err, work) {
+            if (!err) {
+                console.log(work);
+                res.render("wazaef",{Works:work,login:false});
+
+         }});
+}
+    
+    
+    
    
 });
 
 app.get('/tadreebpage', (req, res) => {
+    var query = db.Corse.find({}).sort({"_id":-1});
     if(req.isAuthenticated()){
-db.Corse.find({},(err,found)=>{
-if(!err){
-    res.render("tadreepPage",{Trian:found , login:true, name:req.user.name});
+        
+        query.exec(function(err, work) {
+            if (!err) {
+                console.log(work);
+                res.render("tadreepPage",{Trian:work , login:true, name:req.user.name});
+
+         }});
+       
+
+
+
 }
 else{
-    console.log(err);
-}
-});
-}else{
-    db.Corse.find({},(err,found)=>{
-        if(!err){
-            res.render("tadreepPage",{Trian:found , login:false});
-        }
-        else{
-            console.log(err);
-        }
-        });
+        query.exec(function(err, work) {
+            if (!err) {
+                console.log(work);
+                res.render("tadreepPage",{Trian:work , login:false});
+
+         }});
 }
     
 });
@@ -160,39 +168,70 @@ app.get('/wazeefeh', (req, res) => {
     if(req.isAuthenticated()){
     res.render("wazefeh",{login:true , name:req.user.name});
 }else{
-    res.redirect("/");
+    res.render("wazefeh",{login:false});
 }
 
 
 });
 app.get('/services', (req, res) => {
-res.render("services");	
+    if(req.isAuthenticated()){
+        res.render("services",{login:true , name:req.user.name});}
+    else{
+        res.render("services",{login:false });
+    }	
 });
 
 app.get('/contactUs', (req, res) => {
-res.render("contactUs");	
+    if(req.isAuthenticated()){  
+res.render("contactUs",{login:true , name:req.user.name});
+	} else{
+        res.render("contactUs",{login:false});
+    }
 });
+
+
 app.get('/workpage/:pageid', (req, res) => {
-console.log(req.params.pageid);
+    if(req.isAuthenticated()){
 db.Work.findById(req.params.pageid,(err,found)=>{
     if(!err){
-        res.render("wazefehPage",{work:found}); 	
+        res.render("wazefehPage",{work:found,login:true , name:req.user.name}); 	
     }
-})
-
+});
+    }else{
+        db.Work.findById(req.params.pageid,(err,found)=>{
+            if(!err){
+                res.render("wazefehPage",{work:found,login:false}); 	
+            }
+        });
+    }
     
 });
 
 app.get('/trainPage/:pageid', (req, res) => {
-	db.Corse.findById(req.params.pageid,(err,found)=>{
+    if(req.isAuthenticated()){
+    db.Corse.findById(req.params.pageid,(err,found)=>{
         if(!err){
-            res.render("trainPage",{train:found}); 	
+            res.render("trainPage",{train:found,login:true , name:req.user.name}); 	
         }
     });
-    
+} else{
+    db.Corse.findById(req.params.pageid,(err,found)=>{
+        if(!err){
+            res.render("trainPage",{train:found,login:false}); 	
+        }
+    });
+}
 });
 
+app.get('/sucsess', (req, res) => {
+    if(req.isAuthenticated()){
+        res.render("seccess",{login:true , name:req.user.name});
+    }else{
+        res.render("seccess",{login:false});
+    }
 
+
+});
 app.get('/search_member', function(req, res) {
       
     var regex = new RegExp(req.query["term"], 'i');
@@ -283,7 +322,7 @@ app.post("/login", function(req, res){
             res.render("signUp",{wrong:true});
         } else {
             passport.authenticate("local")(req, res, function () {
-                res.redirect("/userhome");
+                res.redirect("/");
             });
         }
     });
@@ -305,7 +344,7 @@ app.post('/saveWork', (req, res) => {
         createDate :req.body.createdate
     });
     newWork.save();
-    res.redirect("/wazeefeh");
+    res.redirect("/wazaef");
 
 });
 
@@ -343,7 +382,7 @@ app.post('/savemassge', (req, res) => {
    });
 newMassge.save();
 
-res.render("success");
+res.redirect("sucsess");
    
 	
     });
