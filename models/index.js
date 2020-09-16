@@ -1,8 +1,8 @@
 
 
 module.exports = {
-    Work: require("./Work"),
-    Corse: require("./Corses"),
-    Services:require("./services")
+    Work: require(__dirname + "/Work"),
+    Corse: require(__dirname+"/Corses"),
+    Services:require(__dirname+"/services")
   };
   
