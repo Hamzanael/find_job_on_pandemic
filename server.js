@@ -222,7 +222,7 @@ else{
    
 });
 
-app.get('/tadreebpage', (req, res) => {
+app.get('/tadreepPage', (req, res) => {
     var query = Corse.find({}).sort({"_id":-1});
     if(req.isAuthenticated()){
         
@@ -514,7 +514,7 @@ app.post('/saveTraning', (req, res) => {
  });
 
 newTraning.save(); 
-res.redirect("/tadreepPage'");
+res.redirect("/tadreepPage");
 
 });
 
