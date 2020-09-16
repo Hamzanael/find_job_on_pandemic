@@ -119,7 +119,7 @@ const Work = mongoose.model(
     new mongoose.Schema({
         TranName: String,
         place:String,
-        time:Date,
+        time:String,
         cost:Number,
         hours:Number,
         period:Number,
