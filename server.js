@@ -60,7 +60,7 @@ passport.deserializeUser(function (id, done) {
 passport.use(new FacebookStrategy({
     clientID: "808329863268667",
     clientSecret: "40c0f32391ca42a02b15222fcd138b1e",
-    callbackURL: "http://localhost:3000/auth/facebook/home"
+    callbackURL: "https://protected-plateau-08761.herokuapp.com/auth/facebook/home"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ facebookId: profile.id,  name: profile.displayName,username: profile.id, }, function (err, user) {
