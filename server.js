@@ -75,7 +75,7 @@ passport.use(new FacebookStrategy({
 passport.use(new GoogleStrategy({
     clientID: "82635980656-dd4ji63tf7vndjcebg4upvt7dk8kfdud.apps.googleusercontent.com",
     clientSecret: "ipNrKN0fOMQsDirq3wRtlmiM",
-    callbackURL: "http://localhost:3000/auth/google/home",
+    callbackURL: "https://protected-plateau-08761.herokuapp.com/auth/google/home",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
 function (accessToken, refreshToken, profile, cb) {
