@@ -9,7 +9,6 @@ const findOrCreate = require('mongoose-findorcreate');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy=require("passport-facebook").Strategy;
 const app = express();
-const db = require("./public/models");
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -91,11 +90,49 @@ function (accessToken, refreshToken, profile, cb) {
 }
 ));
 
-
+const Work = mongoose.model(
+    "work",
+    new mongoose.Schema({
+        JobName: String,
+        place:String,
+        study:String,
+        experiance:String,
+        salary:Number,
+        phone:String,
+        mail:String,
+        hours:Number,
+        discription : String,
+        createDate:String
+    })
+  );
+  const Services = mongoose.model(
+    "service",
+    new mongoose.Schema({
+        Name: String,
+        serviceName:String,
+        mail:String,
+        phone:Number,
+    })
+  );
+  const Corse = mongoose.model(
+    "corse",
+    new mongoose.Schema({
+        TranName: String,
+        place:String,
+        time:Date,
+        cost:Number,
+        hours:Number,
+        period:Number,
+        phone:String,
+        mail:String,
+        description : String,
+        createDate:String
+    })
+  );
 
 app.get('/', (req, res) => {
-    var query = db.Work.find({}).sort({"_id":-1});
-    var query2 = db.Corse.find({}).sort({"_id":-1});
+    var query =Work.find({}).sort({"_id":-1});
+    var query2 = Corse.find({}).sort({"_id":-1});
 
 
     if(req.isAuthenticated()){
@@ -158,7 +195,7 @@ app.get('/tadreeb', (req, res) => {
 });
 
 app.get('/wazaef', (req, res) => {
-    var query = db.Work.find({}).sort({"_id":-1});
+    var query = Work.find({}).sort({"_id":-1});
     if(req.isAuthenticated()){
         query.exec(function(err, work) {
             if (!err) {
@@ -186,7 +223,7 @@ else{
 });
 
 app.get('/tadreebpage', (req, res) => {
-    var query = db.Corse.find({}).sort({"_id":-1});
+    var query = Corse.find({}).sort({"_id":-1});
     if(req.isAuthenticated()){
         
         query.exec(function(err, train) {
@@ -239,13 +276,13 @@ res.render("contactUs",{login:true , name:req.user.name});
 
 app.get('/workpage/:pageid', (req, res) => {
     if(req.isAuthenticated()){
-db.Work.findById(req.params.pageid,(err,found)=>{
+Work.findById(req.params.pageid,(err,found)=>{
     if(!err){
         res.render("wazefehPage",{work:found,login:true , name:req.user.name,flag:true}); 	
     }
 });
     }else{
-        db.Work.findById(req.params.pageid,(err,found)=>{
+       Work.findById(req.params.pageid,(err,found)=>{
             if(!err){
                 res.render("wazefehPage",{work:found,login:false,flag:true}); 	
             }
@@ -256,13 +293,13 @@ db.Work.findById(req.params.pageid,(err,found)=>{
 
 app.get('/trainPage/:pageid', (req, res) => {
     if(req.isAuthenticated()){
-    db.Corse.findById(req.params.pageid,(err,found)=>{
+    Corse.findById(req.params.pageid,(err,found)=>{
         if(!err){
             res.render("trainPage",{train:found,login:true , name:req.user.name ,flag:true}); 	
         }
     });
 } else{
-    db.Corse.findById(req.params.pageid,(err,found)=>{
+    Corse.findById(req.params.pageid,(err,found)=>{
         if(!err){
             res.render("trainPage",{train:found,login:false ,flag:true}); 	
         }
@@ -282,7 +319,7 @@ app.get('/sucsess', (req, res) => {
 app.get('/search_member', function(req, res) {
       
     var regex = new RegExp(req.query["term"], 'i');
-    var query = db.Work.find({JobName: regex}, { 'JobName': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20);
+    var query = Work.find({JobName: regex}, { 'JobName': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20);
       
        // Execute query in a callback and return users list
    query.exec(function(err, work) {
@@ -302,7 +339,7 @@ app.get('/search_member', function(req, res) {
 
  app.get('/search_member_traning', (req, res) => {
     var regex = new RegExp(req.query["term"], 'i');
-    var query = db.Corse.find({TranName: regex}, { 'TranName': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20);
+    var query = Corse.find({TranName: regex}, { 'TranName': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20);
       
        // Execute query in a callback and return users list
    query.exec(function(err, work) {
@@ -322,7 +359,7 @@ app.get('/search_member', function(req, res) {
 
 app.post('/search', (req, res) => {
     if(req.isAuthenticated()){
-    db.Work.find({JobName:req.body.searchJob},(err,found)=>{
+    Work.find({JobName:req.body.searchJob},(err,found)=>{
         if(found.length>0){
            
             res.render("wazefehPage",{work:found[0], login:true , name:req.user.name,flag:true}); 
@@ -333,7 +370,7 @@ app.post('/search', (req, res) => {
     });
 }
 else{
-    db.Work.find({JobName:req.body.searchJob},(err,found)=>{
+    Work.find({JobName:req.body.searchJob},(err,found)=>{
         if(found.length>0){
       
 
@@ -350,7 +387,7 @@ else{
 
 app.post('/trainSearch', (req, res) => {
 	if(req.isAuthenticated()){
-        db.Corse.find({TranName:req.body.trainName},(err,found)=>{
+    Corse.find({TranName:req.body.trainName},(err,found)=>{
             if(found.length>0){
                 res.render("trainPage",{train:found[0],login:true , name:req.user.name,flag:true}); 
             }
@@ -360,7 +397,7 @@ app.post('/trainSearch', (req, res) => {
         });
     }
     else{
-        db.Corse.find({TranName:req.body.trainName},(err,found)=>{
+        Corse.find({TranName:req.body.trainName},(err,found)=>{
             if(found.length>0){
                
                 
@@ -444,7 +481,7 @@ app.post("/login", function(req, res){
 
 app.post('/saveWork', (req, res) => {
     
-    const newWork=new db.Work({
+    const newWork=new Work({
         JobName: req.body.JobName,
         place:req.body.place,
         study:req.body.study,
@@ -462,7 +499,7 @@ app.post('/saveWork', (req, res) => {
 });
 
 app.post('/saveTraning', (req, res) => {
- const newTraning = new db.Corse({
+ const newTraning = new Corse({
     TranName: req.body.TranName,
     place:req.body.place,
     time:req.body.time,
@@ -487,7 +524,7 @@ res.redirect("/tadreepPage'");
 
 app.post('/savemassge', (req, res) => {
    
-    const newMassge = db.Services({
+    const newMassge = Services({
     Name: req.body.Name,
     serviceName:req.body.serviceName,
     mail:req.body.mail,
