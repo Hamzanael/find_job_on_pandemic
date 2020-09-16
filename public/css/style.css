@@ -318,7 +318,9 @@ input[type=number] {
     padding: 4%;
     
   }
-
+  .row{
+    margin-right: 0;
+}
 
 @media (max-width:768px) {
     .navbar-brand {
