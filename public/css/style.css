@@ -237,6 +237,18 @@ a.FB {
     background-color: inherit;
 }
 
+.contact-form a {
+    display: block;
+    width: 100%;
+    height: 36px;
+    border-width: 0 0 136px 0;
+    border-color: #5543ca;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+    text-align: right;
+    background-color: inherit;
+}
 .contact-form .input-text:focus {
     outline: none;
 }

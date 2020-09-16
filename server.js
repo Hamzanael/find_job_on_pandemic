@@ -81,7 +81,11 @@ function (accessToken, refreshToken, profile, cb) {
 
 
 app.get('/', (req, res) => {
-res.render("home");
+    if(req.isAuthenticated()){
+    res.render("home",{login:true, name:req.user.name});}
+    else{
+        res.render("home",{login:false});}
+    
 });
 
 
@@ -98,37 +102,68 @@ app.get('/loginfail', (req, res) => {
 });
 
 app.get('/tadreeb', (req, res) => {
-res.render("tadreeb");
+    if(req.isAuthenticated()){
+        res.render("tadreeb",{login:true, name:req.user.name});
+    }else{
+        res.render("tadreeb",{login:false});
+    }
+    
 });
 
 app.get('/wazaef', (req, res) => {
+    if(req.isAuthenticated()){
     db.Work.find({} , (err,found)=>{
         if(!err){
-            res.render("wazaef",{Works:found});
+            res.render("wazaef",{Works:found,login:true, name:req.user.name});
         }
         else{
             console.log(err);
         }
     });
-
+    } else{
+        db.Work.find({} , (err,found)=>{
+            if(!err){
+                res.render("wazaef",{Works:found,login:false});
+            }
+            else{
+                console.log(err);
+            }
+        });
+    }
    
 });
 
 app.get('/tadreebpage', (req, res) => {
-
+    if(req.isAuthenticated()){
 db.Corse.find({},(err,found)=>{
 if(!err){
-    res.render("tadreepPage",{Trian:found});
+    res.render("tadreepPage",{Trian:found , login:true, name:req.user.name});
 }
 else{
     console.log(err);
 }
 });
+}else{
+    db.Corse.find({},(err,found)=>{
+        if(!err){
+            res.render("tadreepPage",{Trian:found , login:false});
+        }
+        else{
+            console.log(err);
+        }
+        });
+}
     
 });
 
 app.get('/wazeefeh', (req, res) => {
-res.render("wazefeh");
+    if(req.isAuthenticated()){
+    res.render("wazefeh",{login:true , name:req.user.name});
+}else{
+    res.redirect("/");
+}
+
+
 });
 app.get('/services', (req, res) => {
 res.render("services");	
@@ -137,6 +172,26 @@ res.render("services");
 app.get('/contactUs', (req, res) => {
 res.render("contactUs");	
 });
+app.get('/workpage/:pageid', (req, res) => {
+console.log(req.params.pageid);
+db.Work.findById(req.params.pageid,(err,found)=>{
+    if(!err){
+        res.render("wazefehPage",{work:found}); 	
+    }
+})
+
+    
+});
+
+app.get('/trainPage/:pageid', (req, res) => {
+	db.Corse.findById(req.params.pageid,(err,found)=>{
+        if(!err){
+            res.render("trainPage",{train:found}); 	
+        }
+    });
+    
+});
+
 
 app.get('/search_member', function(req, res) {
       
@@ -159,6 +214,25 @@ app.get('/search_member', function(req, res) {
     });
  });
 
+ app.get('/search_member_traning', (req, res) => {
+    var regex = new RegExp(req.query["term"], 'i');
+    var query = db.Corse.find({TranName: regex}, { 'TranName': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20);
+      
+       // Execute query in a callback and return users list
+   query.exec(function(err, work) {
+       if (!err) {
+          // Method to construct the json result set
+          var result = JSON.stringify(work);
+          res.send(result, {
+             'Content-Type': 'application/json'
+          }, 200);
+       } else {
+          res.send(JSON.stringify(err), {
+             'Content-Type': 'application/json'
+          }, 404);
+       }
+    });
+ });
 
 /*Google sign in*/
 
@@ -259,7 +333,20 @@ res.redirect("/tadreepPage'")
 
 
 
+app.post('/savemassge', (req, res) => {
+   
+    const newMassge = db.Services({
+    Name: req.body.Name,
+    serviceName:req.body.serviceName,
+    mail:req.body.mail,
+    phone:req.body.phone,
+   });
+newMassge.save();
 
+res.render("success");
+   
+	
+    });
 
 
 

@@ -38,69 +38,55 @@
     
 </section>
 <section class="get-in-touch">
-    <h1 class="title">انشر الدوره او التدريب </h1>
-    <form class="contact-form row" action="/saveTraning" method="POST">
+    <h1 class="title"><%= work.JobName %> </h1>
+    <form class="contact-form row" action="/" method="GET">
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="TranName" class="input-text js-input" type="text" name="TranName" required>
-            <label class="label" for="TranName">اسم الدوره</label>
+            <input id="JobName" class="input-text js-input" type="text" name="JobName" disabled value="<%= work.JobName %> ">
+            <label class="label" for="JobName">اسم الوظيفه</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="place" class="input-text js-input" type="text" name="place" required>
-            <label class="label" for="place"> مكان الدوره</label>
+            <input id="place" class="input-text js-input" type="text" name="place" value="<%= work.place %> " disabled>
+            <label class="label" for="place"> مكان الوظيفه</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="cost" class="input-text js-input" type="text" name="cost"  placeholder="في حال عدم وجود خبره الرجاء ترك الحقل فارغ">
-            <label class="label" for="cost">الخبرة المطلوبة</label>
+            <input id="experiance" class="input-text js-input" type="text"
+                name="experiance" value="<%= work.experiance %>" disabled>
+            <label class="label" for="experiance">الخبرة المطلوبة</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="period" class="input-text js-input" type="number" name="period" required>
-            <label class="label" for="period"> مدة الدوره بالاسبيع</label>
+            <input id="hours" class="input-text js-input" type="number" name="hours" value="<%= work.hours %>" disabled >
+            <label class="label" for="hours">عدد ساعات العمل</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="hours" class="input-text js-input" type="number" name="hours" required>
-            <label class="label" for="hours"> عدد ساعات الدوره</label>
+            <input id="salary" class="input-text js-input" type="number" name="salary" value="<%= work.salary %>" disabled>
+            <label class="label" for="salary">الراتب اليومي</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="time" class="input-text js-input" type="date" name="time"
-                placeholder="في حال عدم وجود تخصص الرجاء ترك الحقل فارغ" required>
-            <label class="label" for="time"> تاريخ بدايةالدوره</label>
+            <input id="study" class="input-text js-input" type="text" name="study"
+                value="<%= work.study %> "disabled>
+            <label class="label" for="study">التخصص الدراسي</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="phone" class="input-text js-input" type="number" name="phone" required>
+          <a href="tel:<%= work.phone %>">  <input id="phone" class="input-text js-input" type="text" name="phone"  value="<%= work.phone %> "></a>
             <label class="label" for="phone">رقم الهاتف</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="mail" class="input-text js-input" type="text" name="mail"
-                placeholder="في حال عدم وجود بريد الرجاء ترك الحقل فارغ">
+            <input id="mail" class="input-text js-input" type="number" name="mail"
+                 value="<%= work.mail %> "disabled>
             <label class="label" for="mail">البريد الالكتروني</label>
         </div>
         <div class="form-field col-lg-12 col-sm-9">
             <input id="discription" class="input-text js-input" type="text" name="discription"
-                placeholder="في حال عدم وجود شرح الرجاء ترك الحقل فارغ">
+               value="<%= work.discription %>" disabled>
             <label class="label" for="discription">شرح عن الوظيفه</label>
         </div>
-        <input type="hidden" name="createdate" id="todayDate"/>
+        
         <div class="form-field col-lg-12 ">
-            <input class="submit-btn" type="submit" value="انشر">
+            <input class="submit-btn" type="submit" value="عوده للصفحه الرئيسيه">
         </div>
     </form>
 </section>
-       
-<script type="text/javascript">
-  function getDate()
-  {
-      
-  let dateObj = new Date();
-  let month = dateObj.getMonth()+1;
-  let day = String(dateObj.getDate()).padStart(2, '0');
-  let year = dateObj.getFullYear();
-  let output = day    + '/'+ month+ '/' + year;
 
-  
-      document.getElementById("todayDate").value = output;
-  }
-  
-  //call getDate() when loading the page
-  getDate();
-  </script>
+
+
 <%- include('footer');-%>

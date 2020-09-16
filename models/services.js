@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const service = mongoose.model(
-    "corse",
+const Services = mongoose.model(
+    "service",
     new mongoose.Schema({
         Name: String,
         serviceName:String,
@@ -9,5 +9,5 @@ const service = mongoose.model(
     })
   );
   
-  module.exports = Corse;
+  module.exports = Services;
   

@@ -38,69 +38,52 @@
     
 </section>
 <section class="get-in-touch">
-    <h1 class="title">انشر الدوره او التدريب </h1>
-    <form class="contact-form row" action="/saveTraning" method="POST">
+    <h1 class="title"><%=train.TranName %> </h1>
+    <form class="contact-form row" action="/" method="GET">
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="TranName" class="input-text js-input" type="text" name="TranName" required>
+            <input id="TranName" class="input-text js-input" type="text" name="TranName" value="<%=train.TranName %> " disabled>
             <label class="label" for="TranName">اسم الدوره</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="place" class="input-text js-input" type="text" name="place" required>
+            <input id="place" class="input-text js-input" type="text" name="place" value="<%=train.place %> " disabled>
             <label class="label" for="place"> مكان الدوره</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="cost" class="input-text js-input" type="text" name="cost"  placeholder="في حال عدم وجود خبره الرجاء ترك الحقل فارغ">
+            <input id="cost" class="input-text js-input" type="text" name="cost"  value="<%=train.cost %> " disabled>
             <label class="label" for="cost">الخبرة المطلوبة</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="period" class="input-text js-input" type="number" name="period" required>
+            <input id="period" class="input-text js-input" type="number" name="period" value="<%=train.period %> " disabled>
             <label class="label" for="period"> مدة الدوره بالاسبيع</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="hours" class="input-text js-input" type="number" name="hours" required>
+            <input id="hours" class="input-text js-input" type="number" name="hours"value="<%=train.hours %> " disabled>
             <label class="label" for="hours"> عدد ساعات الدوره</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
             <input id="time" class="input-text js-input" type="date" name="time"
-                placeholder="في حال عدم وجود تخصص الرجاء ترك الحقل فارغ" required>
+               value="<%=train.time %> " disabled>
             <label class="label" for="time"> تاريخ بدايةالدوره</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
-            <input id="phone" class="input-text js-input" type="number" name="phone" required>
+          <a href="tel:<%=train.phone %>"> <input id="phone" class="input-text js-input" type="text" name="phone"  value="<%=train.phone %> " disabled> </a> 
             <label class="label" for="phone">رقم الهاتف</label>
         </div>
         <div class="form-field col-lg-6 col-sm-5">
             <input id="mail" class="input-text js-input" type="text" name="mail"
-                placeholder="في حال عدم وجود بريد الرجاء ترك الحقل فارغ">
+                value="<%=train.mail %> " disabled>
             <label class="label" for="mail">البريد الالكتروني</label>
         </div>
         <div class="form-field col-lg-12 col-sm-9">
             <input id="discription" class="input-text js-input" type="text" name="discription"
-                placeholder="في حال عدم وجود شرح الرجاء ترك الحقل فارغ">
+                value="<%=train.discription %> " disabled>
             <label class="label" for="discription">شرح عن الوظيفه</label>
         </div>
         <input type="hidden" name="createdate" id="todayDate"/>
         <div class="form-field col-lg-12 ">
-            <input class="submit-btn" type="submit" value="انشر">
+            <input class="submit-btn" type="submit" value="عوده للصفحه الرئيسية">
         </div>
     </form>
 </section>
-       
-<script type="text/javascript">
-  function getDate()
-  {
-      
-  let dateObj = new Date();
-  let month = dateObj.getMonth()+1;
-  let day = String(dateObj.getDate()).padStart(2, '0');
-  let year = dateObj.getFullYear();
-  let output = day    + '/'+ month+ '/' + year;
 
-  
-      document.getElementById("todayDate").value = output;
-  }
-  
-  //call getDate() when loading the page
-  getDate();
-  </script>
 <%- include('footer');-%>
