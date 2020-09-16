@@ -35,6 +35,22 @@
     </div>
  <% } %>
 </nav>
+<% if (!flag) { %>
+ 
+    <section class="jumbotron text-center " style="background-color: #ff4b5c; ">
+        <div class="container">
+          <h1 style="text-align-last: center; color: #FBFAE4;"> نعتذر لم نعثر على الدوره المطلوبةالرجاء تفقد الموقع بشكل دائم </h1>
+          <p class="lead text-muted"></p>
+          <p>
+            <a href="/" class="btn btn-info my-2">عودة للصفحه الرئيسيه</a>
+          </p>
+        </div>
+      </section>
+    <% } %>
+
+    
+    <% if (flag) { %>
+     
     
 </section>
 <section class="get-in-touch">
@@ -85,5 +101,5 @@
         </div>
     </form>
 </section>
-
+<% } %>
 <%- include('footer');-%>

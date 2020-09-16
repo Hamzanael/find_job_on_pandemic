@@ -307,6 +307,18 @@ input[type=number] {
     background-color: inherit;
 }
 
+
+  .card-columns .card {
+    display: inline-block;
+    width: 100%;
+    background-color: cornsilk;
+    position: relative;
+    left: 25rem;
+    text-align: right;
+    
+  }
+
+
 @media (max-width:768px) {
     .navbar-brand {
         
@@ -334,6 +346,9 @@ input[type=number] {
     }
     .search{
         margin-top: 50px;
+    }
+    .card-columns .card{
+        position: unset;
     }
     
 }

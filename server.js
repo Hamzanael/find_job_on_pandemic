@@ -7,6 +7,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const findOrCreate = require('mongoose-findorcreate');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy=require("passport-facebook").Strategy;
 const app = express();
 const db = require("./models");
 app.use(bodyParser.urlencoded({
@@ -59,6 +60,21 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
+passport.use(new FacebookStrategy({
+    clientID: "808329863268667",
+    clientSecret: "40c0f32391ca42a02b15222fcd138b1e",
+    callbackURL: "http://localhost:3000/auth/facebook/home"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id,  name: profile.displayName,username: profile.id, }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+
+
+
+
 passport.use(new GoogleStrategy({
     clientID: "82635980656-dd4ji63tf7vndjcebg4upvt7dk8kfdud.apps.googleusercontent.com",
     clientSecret: "ipNrKN0fOMQsDirq3wRtlmiM",
@@ -66,7 +82,6 @@ passport.use(new GoogleStrategy({
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
 function (accessToken, refreshToken, profile, cb) {
-    console.log(profile);
 
     User.findOrCreate({
         googleId: profile.id,
@@ -81,10 +96,44 @@ function (accessToken, refreshToken, profile, cb) {
 
 
 app.get('/', (req, res) => {
+    var query = db.Work.find({}).sort({"_id":-1});
+    var query2 = db.Corse.find({}).sort({"_id":-1});
+
+
     if(req.isAuthenticated()){
-    res.render("home",{login:true, name:req.user.name});}
+        query.exec(function(err, work) {
+            if (!err) {
+                query2.exec(function(err, train) {
+                    if (!err) {
+                       
+                        res.render("home",{login:true, name:req.user.name ,Train:train,Work:work});
+                 }});
+                
+
+         }else{
+             res.send("We Will fix it")
+         } 
+        });
+
+
+
+    
+
+}
     else{
-        res.render("home",{login:false});}
+       query.exec(function(err, work) {
+            if (!err) {
+                query2.exec(function(err, train) {
+                    if (!err) {
+                       
+                        res.render("home",{login:false,Train:train,Work:work});
+                 }});
+                
+
+         }else{
+             res.send("We Will fix it")
+         } 
+        });}
     
 });
 
@@ -115,7 +164,7 @@ app.get('/wazaef', (req, res) => {
     if(req.isAuthenticated()){
         query.exec(function(err, work) {
             if (!err) {
-                console.log(work);
+               
                 res.render("wazaef",{Works:work,login:true, name:req.user.name});
 
          }});
@@ -127,7 +176,7 @@ app.get('/wazaef', (req, res) => {
 else{ 
         query.exec(function(err, work) {
             if (!err) {
-                console.log(work);
+            
                 res.render("wazaef",{Works:work,login:false});
 
          }});
@@ -142,10 +191,10 @@ app.get('/tadreebpage', (req, res) => {
     var query = db.Corse.find({}).sort({"_id":-1});
     if(req.isAuthenticated()){
         
-        query.exec(function(err, work) {
+        query.exec(function(err, train) {
             if (!err) {
-                console.log(work);
-                res.render("tadreepPage",{Trian:work , login:true, name:req.user.name});
+             
+                res.render("tadreepPage",{Trian:train , login:true, name:req.user.name});
 
          }});
        
@@ -156,7 +205,7 @@ app.get('/tadreebpage', (req, res) => {
 else{
         query.exec(function(err, work) {
             if (!err) {
-                console.log(work);
+               
                 res.render("tadreepPage",{Trian:work , login:false});
 
          }});
@@ -194,13 +243,13 @@ app.get('/workpage/:pageid', (req, res) => {
     if(req.isAuthenticated()){
 db.Work.findById(req.params.pageid,(err,found)=>{
     if(!err){
-        res.render("wazefehPage",{work:found,login:true , name:req.user.name}); 	
+        res.render("wazefehPage",{work:found,login:true , name:req.user.name,flag:true}); 	
     }
 });
     }else{
         db.Work.findById(req.params.pageid,(err,found)=>{
             if(!err){
-                res.render("wazefehPage",{work:found,login:false}); 	
+                res.render("wazefehPage",{work:found,login:false,flag:true}); 	
             }
         });
     }
@@ -211,13 +260,13 @@ app.get('/trainPage/:pageid', (req, res) => {
     if(req.isAuthenticated()){
     db.Corse.findById(req.params.pageid,(err,found)=>{
         if(!err){
-            res.render("trainPage",{train:found,login:true , name:req.user.name}); 	
+            res.render("trainPage",{train:found,login:true , name:req.user.name ,flag:true}); 	
         }
     });
 } else{
     db.Corse.findById(req.params.pageid,(err,found)=>{
         if(!err){
-            res.render("trainPage",{train:found,login:false}); 	
+            res.render("trainPage",{train:found,login:false ,flag:true}); 	
         }
     });
 }
@@ -273,6 +322,60 @@ app.get('/search_member', function(req, res) {
     });
  });
 
+app.post('/search', (req, res) => {
+    if(req.isAuthenticated()){
+    db.Work.find({JobName:req.body.searchJob},(err,found)=>{
+        if(found.length>0){
+           
+            res.render("wazefehPage",{work:found[0], login:true , name:req.user.name,flag:true}); 
+        }
+        if(found.length==0){
+            res.render("wazefehPage",{work:null,login:true , name:req.user.name,flag:false});
+        }
+    });
+}
+else{
+    db.Work.find({JobName:req.body.searchJob},(err,found)=>{
+        if(found.length>0){
+      
+
+
+            res.render("wazefehPage",{work:found[0],login:false ,flag:true}); 
+        }
+        if(found.length==0){
+            res.render("wazefehPage",{work:null,login:false ,flag:false});
+        }
+    });
+
+}
+});
+
+app.post('/trainSearch', (req, res) => {
+	if(req.isAuthenticated()){
+        db.Corse.find({TranName:req.body.trainName},(err,found)=>{
+            if(found.length>0){
+                res.render("trainPage",{train:found[0],login:true , name:req.user.name,flag:true}); 
+            }
+            if(found.length==0){
+                res.render("trainPage",{train:null,login:true , name:req.user.name,flag:false});
+            }
+        });
+    }
+    else{
+        db.Corse.find({TranName:req.body.trainName},(err,found)=>{
+            if(found.length>0){
+               
+                
+                res.render("trainPage",{train:found[0],login:false , flag:true}); 
+            }
+            if(found.length==0){
+                res.render("trainPage",{train:null,login:false , flag:false});
+            }
+        });
+    
+    }
+});
+
 /*Google sign in*/
 
 app.get('/auth/google',
@@ -292,6 +395,18 @@ app.get('/auth/google/home',
         res.redirect("/");
 
     });
+
+
+
+    app.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+app.get('/auth/facebook/home',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 /*log in and sign up  locally*/
 app.post("/login", function(req, res){
@@ -364,7 +479,7 @@ app.post('/saveTraning', (req, res) => {
  });
 
 newTraning.save(); 
-res.redirect("/tadreepPage'")
+res.redirect("/tadreepPage'");
 
 });
 

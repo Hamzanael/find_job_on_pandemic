@@ -37,6 +37,23 @@
 </nav>
     
 </section>
+
+
+<% if (!flag) { %>
+<section class="jumbotron text-center " style="background-color: #ff4b5c; ">
+    <div class="container">
+      <h1 style="text-align-last: center; color: #FBFAE4;"> نعتذر لم نعثر على الوظيفه الرجاء تفقد الموقع بشكل دائم </h1>
+      <p class="lead text-muted"></p>
+      <p>
+        <a href="/" class="btn btn-info my-2">عودة للصفحه الرئيسيه</a>
+      </p>
+    </div>
+  </section>
+<% } %>
+
+
+
+<% if (flag) { %>
 <section class="get-in-touch">
     <h1 class="title"><%= work.JobName %> </h1>
     <form class="contact-form row" action="/" method="GET">
@@ -86,7 +103,6 @@
         </div>
     </form>
 </section>
-
-
+<% } %>
 
 <%- include('footer');-%>
