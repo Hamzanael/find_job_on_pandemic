@@ -9,7 +9,7 @@ const findOrCreate = require('mongoose-findorcreate');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy=require("passport-facebook").Strategy;
 const app = express();
-const db = require( __dirname+"/models");
+const db = require("./public/models");
 app.use(bodyParser.urlencoded({
     extended: true
 }));
